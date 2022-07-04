@@ -1,18 +1,27 @@
-List drives  
-`sudo fdisk –l`
-
-Mount drive
-`sudo mount /dev/sda1 /mnt`
-
-Set permissions:
+1. List drives:
+```sh
+sudo fdisk –l
 ```
+
+2. Mount drive:
+```sh
+sudo mount /dev/sda1 /mnt
+```
+
+3. Set permissions:
+```sh
 sudo chmod 775 /mnt
 sudo chown -R pi:pi /mnt
 ```
 
-Mount from boot:  
-`sudo nano /etc/fstab`  
-Add:  
-`/dev/sda1 /mnt ext4 defaults 0 0`
+4. Mount from boot:
+```sh
+sudo nano /etc/fstab
+# Add:
+/dev/sda1 /mnt ext4 defaults 0 0
+```
 
-Then reboot
+5. Reboot:
+```sh
+sudo reboot now
+```
