@@ -1,3 +1,5 @@
+[(format a drive)](https://raspberrytips.com/format-mount-usb-drive/)
+
 1. List drives:
 ```sh
 sudo fdisk –l
