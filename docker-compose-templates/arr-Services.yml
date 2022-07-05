@@ -1,5 +1,9 @@
 version: "3.7"
 
+# Name:        arr-services
+# Description: All arr services
+# Icon url:    https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
+
 services:
   sonarr:
     container_name: sonarr
@@ -74,7 +78,7 @@ services:
   prowlarr:
     container_name: prowlarr
     image: cr.hotio.dev/hotio/prowlarr:develop
-    ports::develop
+    ports:
       - "9696:9696"
     environment:
       - PUID=1000
