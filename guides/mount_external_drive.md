@@ -30,7 +30,7 @@ sudo nano /etc/fstab
 ```
 Then add the following line at the end:
 ```sh
-UUID=0e3b3885-2cba-45d1-bad2-c41efd837bd9 /mnt ext4 auto,nofail,noatime,users,rw,uid=pi,gid=pi 0 0
+UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX /mnt ext4 auto,nofail,noatime,users,rw,uid=pi,gid=pi 0 0
 ```
 The "nofail" option allows the boot process to proceed if the drive is not plugged in.  
 The "noatime" option stops the file access time being updated every time a file is read from the USB stick. This helps improve performance.
