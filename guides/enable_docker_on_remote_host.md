@@ -1,6 +1,6 @@
 ### How to enable docker remote API on docker host?
 1. Navigate to /lib/systemd/system in your terminal and open the `docker.service` file.  
-`nano /lib/systemd/system/docker.service`
+`sudo nano /lib/systemd/system/docker.service`
 2. Find the line which starts with `ExecStart` and add `-H=tcp://0.0.0.0:2375` to make it look like:  
 `ExecStart=/usr/bin/dockerd -H=fd:// -H=tcp://0.0.0.0:2375`
 3. Save the Modified File
