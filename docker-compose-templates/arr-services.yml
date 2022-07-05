@@ -8,6 +8,7 @@ services:
   sonarr: # TV
     container_name: sonarr
     image: cr.hotio.dev/hotio/sonarr
+    restart: unless-stopped
     ports:
       - "8989:8989"
     environment:
@@ -22,6 +23,7 @@ services:
   readarr: # Books
     container_name: readarr
     image: cr.hotio.dev/hotio/readarr:testing
+    restart: unless-stopped
     ports:
       - "8787:8787"
     environment:
@@ -36,6 +38,7 @@ services:
   lidarr: # Music
     container_name: lidarr
     image: cr.hotio.dev/hotio/lidarr:latest
+    restart: unless-stopped
     ports:
       - "8686:8686"
     environment:
@@ -50,6 +53,7 @@ services:
   radarr: # Movies
     container_name: radarr
     image: cr.hotio.dev/hotio/radarr
+    restart: unless-stopped
     ports:
       - "7878:7878"
     environment:
@@ -64,6 +68,7 @@ services:
   whisparr: # NSFW
     container_name: whisparr
     image: cr.hotio.dev/hotio/whisparr:nightly
+    restart: unless-stopped
     ports:
       - "6969:6969"
     environment:
@@ -78,6 +83,7 @@ services:
   prowlarr: # Indexers
     container_name: prowlarr
     image: cr.hotio.dev/hotio/prowlarr:testing
+    restart: unless-stopped
     ports:
       - "9696:9696"
     environment:
@@ -91,6 +97,7 @@ services:
   bazarr: # Subtitles
     container_name: bazarr
     image: cr.hotio.dev/hotio/bazarr
+    restart: unless-stopped
     ports:
       - "6767:6767"
     environment:
