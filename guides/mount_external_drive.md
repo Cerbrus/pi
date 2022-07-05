@@ -16,14 +16,21 @@ sudo chmod 775 /mnt
 sudo chown -R pi:pi /mnt
 ```
 
-4. Mount from boot:
+4. Auto Mount:
+
+When you restart your Pi your mounts will be lost and you will need to repeat Step 4. If you want your USB drive to be mounted when the system starts you can edit the fstab file :
+
 ```sh
 sudo nano /etc/fstab
-# Add:
-/dev/sda1 /mnt ext4 defaults 0 0
 ```
+Then add the following line at the end :
+```sh
+UUID=18A9-9943 /media/usb vfat auto,nofail,noatime,users,rw,uid=pi,gid=pi 0 0
+```
+The "nofail" option allows the boot process to proceed if the drive is not plugged in.  
+The "noatime" option stops the file access time being updated every time a file is read from the USB stick. This helps improve performance.
 
-5. Reboot:
+6. Reboot:
 ```sh
 sudo reboot now
 ```
