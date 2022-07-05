@@ -6,7 +6,7 @@
 3. Save the Modified File
 4. Reload the docker daemon:  
 `systemctl daemon-reload`
-5. Restart the container:
+5. Restart the container:  
 `sudo service docker restart`
 6. Test if it is working by using this command, if everything is fine below command should return a JSON:  
 `curl http://localhost:2375/images/json`
