@@ -34,3 +34,5 @@ The "noatime" option stops the file access time being updated every time a file 
 ```sh
 sudo reboot now
 ```
+
+- [Mount from `/etc/rc.local`](https://askubuntu.com/questions/822478/external-disk-doesnt-mount-during-boot)
