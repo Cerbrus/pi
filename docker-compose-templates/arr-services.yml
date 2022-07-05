@@ -21,7 +21,7 @@ services:
 
   readarr:
     container_name: readarr
-    image: cr.hotio.dev/hotio/readarr
+    image: cr.hotio.dev/hotio/readarr:testing
     ports:
       - "8787:8787"
     environment:
