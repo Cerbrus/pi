@@ -5,7 +5,7 @@ version: "3.7"
 # Icon url:    https://github.com/Servarr/Wiki/raw/master/assets/servarr/servarr_dark_1024.png
 
 services:
-  sonarr:
+  sonarr: # TV
     container_name: sonarr
     image: cr.hotio.dev/hotio/sonarr
     ports:
@@ -19,7 +19,7 @@ services:
       - /mnt/arr/config/sonarr:/config
       - /mnt/arr/data:/data
 
-  readarr:
+  readarr: # Books
     container_name: readarr
     image: cr.hotio.dev/hotio/readarr:testing
     ports:
@@ -33,7 +33,7 @@ services:
       - /mnt/arr/config/readarr:/config
       - /mnt/arr/data:/data
 
-  lidarr:
+  lidarr: # Music
     container_name: lidarr
     image: cr.hotio.dev/hotio/lidarr:latest
     ports:
@@ -47,7 +47,7 @@ services:
       - /mnt/arr/config/lidarr:/config
       - /mnt/arr/data:/data
 
-  radarr:
+  radarr: # Movies
     container_name: radarr
     image: cr.hotio.dev/hotio/radarr
     ports:
@@ -61,7 +61,7 @@ services:
       - /mnt/arr/config/radarr:/config
       - /mnt/arr/data:/data
 
-  whisparr:
+  whisparr: # NSFW
     container_name: whisparr
     image: cr.hotio.dev/hotio/whisparr:nightly
     ports:
@@ -75,9 +75,9 @@ services:
       - /mnt/arr/config/whisparr:/config
       - /mnt/arr/nsfw:/data
 
-  prowlarr:
+  prowlarr: # Indexers
     container_name: prowlarr
-    image: cr.hotio.dev/hotio/prowlarr:develop
+    image: cr.hotio.dev/hotio/prowlarr:testing
     ports:
       - "9696:9696"
     environment:
@@ -88,7 +88,7 @@ services:
     volumes:
       - /mnt/arr/config/prowlarr:/config
 
-  bazarr:
+  bazarr: # Subtitles
     container_name: bazarr
     image: cr.hotio.dev/hotio/bazarr
     ports:
@@ -102,3 +102,16 @@ services:
       - /mnt/arr/config/bazarr:/config
       - /mnt/arr/data/media/movies:/movies #optional
       - /mnt/arr/data/media/tv:/tv
+
+  jackett:
+    container_name: jackett
+    image: linuxserver/jackett
+    restart: unless-stopped
+    ports:
+      - 9117:9117
+    volumes:
+      - /mnt/arr/config/jackett:/config
+    environment:
+      - PUID=1000
+      - PGID=150
+      - TZ=Europe/Amsterdam
