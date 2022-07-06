@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  radarr-movies:
+    container_name: radarr-movies
+    image: cr.hotio.dev/hotio/radarr
+    restart: unless-stopped
+    ports:
+      - "7878:7878"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Europe/Amsterdam
+    volumes:
+      - /mnt/ssd/arr/config/radarr:/config
+      - /mnt/ssd/arr/data:/data

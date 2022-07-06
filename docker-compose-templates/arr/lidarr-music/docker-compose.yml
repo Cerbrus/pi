@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  lidarr-music:
+    container_name: lidarr-music
+    image: cr.hotio.dev/hotio/lidarr:latest
+    restart: unless-stopped
+    ports:
+      - "8686:8686"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Europe/Amsterdam
+    volumes:
+      - /mnt/ssd/arr/config/lidarr:/config
+      - /mnt/ssd/arr/data:/data

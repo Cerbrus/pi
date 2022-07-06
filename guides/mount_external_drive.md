@@ -40,4 +40,9 @@ The "noatime" option stops the file access time being updated every time a file 
 sudo reboot now
 ```
 
+7. Check mounted drives:
+```sh
+df -h
+```
+
 - [Mount from `/etc/rc.local`](https://askubuntu.com/questions/822478/external-disk-doesnt-mount-during-boot)

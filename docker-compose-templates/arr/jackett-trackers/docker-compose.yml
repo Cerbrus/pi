@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  jackett-trackers:
+    container_name: jackett-trackers
+    image: linuxserver/jackett
+    restart: unless-stopped
+    ports:
+      - 9117:9117
+    volumes:
+      - /mnt/ssd/arr/config/jackett:/config
+    environment:
+      - PUID=1000
+      - PGID=150
+      - TZ=Europe/Amsterdam

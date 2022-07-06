@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  whisparr-nsfw:
+    container_name: whisparr-nsfw
+    image: cr.hotio.dev/hotio/whisparr:nightly
+    restart: unless-stopped
+    ports:
+      - "6969:6969"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Europe/Amsterdam
+    volumes:
+      - /mnt/ssd/arr/config/whisparr:/config
+      - /mnt/ssd/arr/nsfw:/data
