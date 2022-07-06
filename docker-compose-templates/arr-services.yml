@@ -17,8 +17,8 @@ services:
       - UMASK=002
       - TZ=Europe/Amsterdam
     volumes:
-      - /mnt/arr/config/sonarr:/config
-      - /mnt/arr/data:/data
+      - /mnt/ssd/arr/config/sonarr:/config
+      - /mnt/ssd/arr/data:/data
 
   readarr: # Books
     container_name: readarr
@@ -32,8 +32,8 @@ services:
       - UMASK=002
       - TZ=Europe/Amsterdam
     volumes:
-      - /mnt/arr/config/readarr:/config
-      - /mnt/arr/data:/data
+      - /mnt/ssd/arr/config/readarr:/config
+      - /mnt/ssd/arr/data:/data
 
   lidarr: # Music
     container_name: lidarr
@@ -47,8 +47,8 @@ services:
       - UMASK=002
       - TZ=Europe/Amsterdam
     volumes:
-      - /mnt/arr/config/lidarr:/config
-      - /mnt/arr/data:/data
+      - /mnt/ssd/arr/config/lidarr:/config
+      - /mnt/ssd/arr/data:/data
 
   radarr: # Movies
     container_name: radarr
@@ -62,8 +62,8 @@ services:
       - UMASK=002
       - TZ=Europe/Amsterdam
     volumes:
-      - /mnt/arr/config/radarr:/config
-      - /mnt/arr/data:/data
+      - /mnt/ssd/arr/config/radarr:/config
+      - /mnt/ssd/arr/data:/data
 
   whisparr: # NSFW
     container_name: whisparr
@@ -77,8 +77,8 @@ services:
       - UMASK=002
       - TZ=Europe/Amsterdam
     volumes:
-      - /mnt/arr/config/whisparr:/config
-      - /mnt/arr/nsfw:/data
+      - /mnt/ssd/arr/config/whisparr:/config
+      - /mnt/ssd/arr/nsfw:/data
 
   prowlarr: # Indexers
     container_name: prowlarr
@@ -92,7 +92,7 @@ services:
       - UMASK=002
       - TZ=Europe/Amsterdam
     volumes:
-      - /mnt/arr/config/prowlarr:/config
+      - /mnt/ssd/arr/config/prowlarr:/config
 
   bazarr: # Subtitles
     container_name: bazarr
@@ -106,9 +106,9 @@ services:
       - UMASK=002
       - TZ=Europe/Amsterdam
     volumes:
-      - /mnt/arr/config/bazarr:/config
-      - /mnt/arr/data/media/movies:/movies #optional
-      - /mnt/arr/data/media/tv:/tv
+      - /mnt/ssd/arr/config/bazarr:/config
+      - /mnt/ssd/arr/data/media/movies:/movies #optional
+      - /mnt/ssd/arr/data/media/tv:/tv
 
   jackett:
     container_name: jackett
@@ -117,7 +117,7 @@ services:
     ports:
       - 9117:9117
     volumes:
-      - /mnt/arr/config/jackett:/config
+      - /mnt/ssd/arr/config/jackett:/config
     environment:
       - PUID=1000
       - PGID=150
