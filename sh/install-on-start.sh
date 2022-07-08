@@ -20,10 +20,10 @@ echo 3. Downloading shell scripts.
 wget -q $GH_FOLDER/sh/on-start.sh -O $HOME/on-start.sh
 wget -q $GH_FOLDER/sh/discord_webhook_announce.sh -O $HOME/sh/discord_webhook_announce.sh
 sudo chmod +x $HOME/on-start.sh
-sudo chmod +x $HOME/sh/on-start.sh
+sudo chmod +x $HOME/sh/discord_webhook_announce.sh
 
 # Install service
-echo 3. Downloading and installing on-start service.
+echo 4. Downloading and installing on-start service.
 
 sudo wget -q $GH_FOLDER/services/on-start.service -O /etc/systemd/system/on-start.service
 sudo systemctl enable on-start.service
