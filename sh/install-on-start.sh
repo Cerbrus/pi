@@ -1,32 +1,29 @@
 #!/bin/sh -e
 # curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/sh/install-on-start.sh | sh
 
-sudo tee -a $HOME/on-start.sh <<EOF
-#!/bin/sh -e
+GH_FOLDER=https://raw.githubusercontent.com/Cerbrus/pi/master
 
-cd $HOME
+# prepare dir.
+echo 1. Preparing script directory.
+mkdir $HOME/sh
 
-echo Running startup scripts
+# Store webhook
+echo 2. Storing webhook.
 
-exit 0
-EOF
+echo Enter discord webhook url
+read WEBHOOK
+echo $WEBHOOK > sh/discord-webhook.url
 
-sudo chmod -x $HOME/on-start.sh
+# Download Shell scripts
+echo 3. Downloading shell scripts.
 
-sudo tee -a /etc/systemd/system/on-start.service <<EOF
-[Unit]
-Description=Run scripts on start
-After=network-online.target
+sudo wget $GH_FOLDER/sh/on-start.sh $HOME/
+sudo wget $GH_FOLDER/sh/discord_webhook_announce.sh $HOME/sh/
+sudo chmod +x $HOME/on-start.sh
+sudo chmod +x $HOME/sh/on-start.sh
 
-[Service]
-Type=simple
-User=pi
-Group=pi
-ExecStart=$HOME/on-start.sh
-Restart=on-failure
+# Install service
+echo 3. Downloading and installing on-start service.
 
-[Install]
-WantedBy=multi-user.target
-EOF
-
+sudo wget $GH_FOLDER/services/on-start.service /etc/systemd/system/
 sudo systemctl enable on-start.service
