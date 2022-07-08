@@ -1,7 +1,7 @@
-# curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/install_docker_portainer.sh | sh
+# curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/sh/install_docker_portainer.sh | sh
 
 # Install Docker
-curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/install_docker.sh | sh
+curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/sh/install_docker.sh | sh
 
 # Install Portainer with Docker on Linux
 # https://docs.portainer.io/start/install/server/docker/linux
