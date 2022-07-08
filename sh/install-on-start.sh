@@ -1,7 +1,7 @@
 #!/bin/sh -e
 # curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/sh/install-on-start.sh | sh
 
-sudo tee -a on-start.sh > $HOME <<EOT
+sudo tee -a $HOME/on-start.sh <<EOF
 #!/bin/sh -e
 
 cd $HOME
@@ -9,11 +9,11 @@ cd $HOME
 echo Running startup scripts
 
 exit 0
-EOT
+EOF
 
 sudo chmod -x $HOME/on-start.sh
 
-sudo tee -a on-start.service > /etc/systemd/system <<EOT
+sudo tee -a /etc/systemd/system/on-start.service <<EOF
 [Unit]
 Description=Run scripts on start
 After=network-online.target
@@ -27,6 +27,6 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-EOT
+EOF
 
 sudo systemctl enable on-start.service
