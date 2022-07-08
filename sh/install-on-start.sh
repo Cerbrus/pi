@@ -37,4 +37,5 @@ sudo wget -q $GH_FOLDER/services/on-start.service -O /etc/systemd/system/on-star
 sudo sed -i "s/HOMEDIR/\/home\/$USER/g" /etc/systemd/system/on-start.service
 
 sudo systemctl enable on-start.service
+sudo systemctl start on-start.service
 sudo systemctl status on-start.service
