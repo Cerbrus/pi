@@ -27,3 +27,4 @@ echo 3. Downloading and installing on-start service.
 
 sudo wget -q $GH_FOLDER/services/on-start.service -P /etc/systemd/system/
 sudo systemctl enable on-start.service
+sudo systemctl status on-start.service
