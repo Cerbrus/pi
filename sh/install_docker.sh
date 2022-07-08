@@ -1,4 +1,4 @@
-# curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/install_docker.sh | sh
+# curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/sh/install_docker.sh | sh
 
 # How To Install Docker and Docker-Compose On Raspberry Pi
 # https://dev.to/elalemanyo/how-to-install-docker-and-docker-compose-on-raspberry-pi-1mo
