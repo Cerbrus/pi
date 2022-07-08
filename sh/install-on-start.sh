@@ -1,5 +1,12 @@
 #!/bin/sh -e
-# curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/sh/install-on-start.sh | sh
+
+<<comment
+# Run these commands to install the startup script.
+echo Enter discord webhook url
+read WEBHOOK
+echo $WEBHOOK > discord-webhook.url
+sudo curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/sh/install-on-start.sh | sh
+comment
 
 GH_FOLDER=https://raw.githubusercontent.com/Cerbrus/pi/master
 
@@ -9,10 +16,7 @@ mkdir -p $HOME/sh
 
 # Store webhook
 echo 2. Storing webhook.
-
-echo Enter discord webhook url
-read WEBHOOK
-echo $WEBHOOK > sh/discord-webhook.url
+mv discord-webhook.url sh/discord-webhook.url
 
 # Download Shell scripts
 echo 3. Downloading shell scripts.
@@ -25,7 +29,12 @@ sudo chmod +x $HOME/sh/discord_webhook_announce.sh
 # Install service
 echo 4. Downloading and installing on-start service.
 
+sudo systemctl stop on-start.service
+sudo systemctl disable on-start.service
+sudo rm /etc/systemd/system/on-start.service
+
 sudo wget -q $GH_FOLDER/services/on-start.service -O /etc/systemd/system/on-start.service
 sudo sed -i "s/HOMEDIR/\/home\/$USER/g" /etc/systemd/system/on-start.service
+
 sudo systemctl enable on-start.service
 sudo systemctl status on-start.service
