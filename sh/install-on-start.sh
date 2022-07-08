@@ -3,9 +3,6 @@
 
 GH_FOLDER=https://raw.githubusercontent.com/Cerbrus/pi/master
 
-echo "\n$HOME\n"
-
-
 # prepare dir.
 echo 1. Preparing script directory.
 mkdir $HOME/sh
