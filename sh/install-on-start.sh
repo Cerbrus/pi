@@ -1,11 +1,13 @@
 #!/bin/sh -e
 
 <<comment
+
 # Run these commands to install the startup script.
 echo Enter discord webhook url
 read WEBHOOK
 echo $WEBHOOK > discord-webhook.url
 sudo curl -sSL https://raw.githubusercontent.com/Cerbrus/pi/master/sh/install-on-start.sh | sh
+
 comment
 
 GH_FOLDER=https://raw.githubusercontent.com/Cerbrus/pi/master
