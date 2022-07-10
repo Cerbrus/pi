@@ -1,57 +1,65 @@
 <!-- https://www.linuxbabe.com/ubuntu/install-deluge-bittorrent-client-ubuntu-20-04 -->
 
 ```sh
-# if necessary: 
-# sudo apt install software-properties-common
-# sudo add-apt-repository ppa:deluge-team/stable
-
-sudo apt install deluged deluge-web
-sudo adduser --system --group deluge
-sudo adduser pi deluge
+sudo apt update && sudo apt upgrade
+sudo apt install deluged deluge-web deluge-console python3-mako
 ```
 
-Add service:
+Generate config files:
+```sh
+deluged
+sudo pkill -i deluged
+```
+```sh
+echo "<USERNAME>:<PASSWORD>:10" >> ~/.config/deluge/auth
+```
+
+Start Deluge and enable remote, then start web:
+```sh
+deluged
+deluge-console "config -s allow_remote True"
+deluge-web -f
+```
+
+Add Deluge service:
 ```sh
 sudo nano /etc/systemd/system/deluged.service
 ```
 ```sh
 [Unit]
-Description=Deluge Bittorrent Client Daemon
+Description=Deluge Daemon
 After=network-online.target
 
 [Service]
 Type=simple
-User=deluge
-Group=deluge
+User=pi
+Group=pi
 UMask=007
 ExecStart=/usr/bin/deluged -d
 Restart=on-failure
-
-# Configures the time to wait before service is stopped forcefully.
 TimeoutStopSec=300
 
 [Install]
 WantedBy=multi-user.target
 ```
 ```sh
-sudo systemctl restart deluged
-sudo systemctl enable deluged
-systemctl status deluged
+sudo systemctl enable deluged.service
 ```
 
-Add WebUi:
+Add WebUi service:
 ```sh
 sudo nano /etc/systemd/system/deluge-web.service
 ```
 ```sh
 [Unit]
-Description=Deluge Bittorrent Client Web Interface
-After=network-online.target
+Description=Deluge Web Interface
+After=network-online.target deluged.service
+Wants=deluged.service
 
 [Service]
 Type=simple
-User=deluge
-Group=deluge
+User=pi
+Group=pi
 UMask=027
 ExecStart=/usr/bin/deluge-web -d
 Restart=on-failure
@@ -60,9 +68,13 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 ```sh
-sudo systemctl start deluge-web
-sudo systemctl enable deluge-web
-systemctl status deluge-web
+sudo systemctl enable deluge-web.service
+```
+
+```sh
+sudo reboot
+sudo systemctl status deluged
+sudo systemctl status deluge-web
 ```
 
 Then accessible at:
