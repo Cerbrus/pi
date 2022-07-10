@@ -1,4 +1,4 @@
-<!-- https://www.linuxbabe.com/ubuntu/install-deluge-bittorrent-client-ubuntu-20-04 -->
+<!-- https://pimylifeup.com/raspberry-pi-deluge/ -->
 
 ```sh
 sudo apt update && sudo apt upgrade
